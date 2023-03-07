@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "972389533276",
+    "firebase_url": "https://test-afe6d-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "test-afe6d",
+    "storage_bucket": "test-afe6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972389533276:android:0b132d0889ee98c7c84899",
+        "android_client_info": {
+          "package_name": "com.example.spero_app_"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972389533276-v3r3h2c6mgrs8mcubqo79580gogqm0ck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcoE-JP_FryEzxPZwwCeX3NtLLtBt0sB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972389533276-v3r3h2c6mgrs8mcubqo79580gogqm0ck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
