@@ -31,6 +31,22 @@ class AuthService {
     }
   }
 
+   Future<User?> createUserWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      final UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(email: email, password: password);
+          Get.offAll(() => LandingPage());
+      return userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+
+  
+
 
   Future<void> signInAnaymus() async {
     var _userAnaymus = await _auth.signInAnonymously();
@@ -39,6 +55,9 @@ class AuthService {
       Get.offAll(() => LandingPage());
     }
   }
+
+
+
 
 
 }

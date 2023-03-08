@@ -14,8 +14,8 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  String _email = "ahmeetsarioglu@gmail.com";
-  String _password = "123456";
+   final String _email = "emrealtunbilek@gmail.com";
+   final String _password = "password123";
   final SignOutConroller _authController = Get.put(SignOutConroller());
   late FirebaseAuth auth;
   late final AuthService _service;
@@ -110,7 +110,7 @@ class _SignInPageState extends State<SignInPage> {
                 Icons.email,
                 size: 28,
               ),
-              onPress: () {},
+              onPress: () {_service.createUserWithEmailAndPassword(_email,_password);},
             ),
             Button(
               buttonText: "guest entry",
@@ -131,4 +131,9 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
+
+
+
+
+
 }

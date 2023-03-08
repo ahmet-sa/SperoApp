@@ -52,6 +52,7 @@ void login() async {
 
   Future<void> signOut() async {
     await _auth.signOut();
+          _auth.signOut();
   }
 
 
