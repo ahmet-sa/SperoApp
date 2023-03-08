@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spero_app_/pages/home.page.dart';
-import 'package:spero_app_/pages/landing_page.dart';
+import '../Services/AuthService.dart';
+import '../widgets/GetxController.dart';
 
 import '../widgets/buttons.dart';
 
@@ -17,13 +16,15 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   String _email = "ahmeetsarioglu@gmail.com";
   String _password = "123456";
-
+  final SignOutConroller _authController = Get.put(SignOutConroller());
   late FirebaseAuth auth;
+  late final AuthService _service;
 
   @override
   void initState() {
     super.initState();
     auth = FirebaseAuth.instance;
+    _service = AuthService();
   }
 
   @override
@@ -41,10 +42,42 @@ class _SignInPageState extends State<SignInPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Sign In",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+            Form(
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: _authController.emailController,
+                    decoration: InputDecoration(labelText: 'Email'),
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your email';
+                      } else if (!GetUtils.isEmail(value)) {
+                        return 'Please enter a valid email';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _authController.passwordController,
+                    decoration: InputDecoration(labelText: 'Password'),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your password';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  Obx(() => ElevatedButton(
+                        onPressed: _authController.isButtonEnabled.value
+                            ? _authController.login
+                            : null,
+                        child: Text('Login'),
+                      )),
+                ],
+              ),
             ),
             SizedBox(height: 8),
             Button(
@@ -54,7 +87,9 @@ class _SignInPageState extends State<SignInPage> {
               radius: 16,
               height: 80,
               buttonIcon: Image.asset("images/google-logo.png"),
-              onPress: () {},
+              onPress: () {
+                _service.signInWithGoogle();
+              },
             ),
             Button(
               buttonText: "Sign in With Facebook",
@@ -75,9 +110,7 @@ class _SignInPageState extends State<SignInPage> {
                 Icons.email,
                 size: 28,
               ),
-              onPress: () {
-                
-              },
+              onPress: () {},
             ),
             Button(
               buttonText: "guest entry",
@@ -90,21 +123,12 @@ class _SignInPageState extends State<SignInPage> {
                 size: 28,
               ),
               onPress: () {
-                _signInAnaymus();
-
+                _service.signInAnaymus();
               },
             ),
           ],
         ),
       ),
     );
-  }
-
-  Future<void> _signInAnaymus() async {
-    var _userAnaymus = await auth.signInAnonymously();
-
-    if (_userAnaymus != null) {
-      Get.offAll(() => LandingPage());
-    }
   }
 }
