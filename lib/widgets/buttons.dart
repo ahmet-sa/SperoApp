@@ -22,19 +22,18 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 1),
+      margin: EdgeInsets.only(bottom: 1),
       child: SizedBox(
         height: height,
         child: Container(
           height: 70,
           width: 500,
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
           child: FloatingActionButton(
             heroTag: buttonText,
             onPressed: onPress,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(radius))),
-            backgroundColor: butonColor,
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Row(
@@ -50,6 +49,7 @@ class Button extends StatelessWidget {
                 ],
               ),
             ),
+            backgroundColor: butonColor,
           ),
         ),
       ),
