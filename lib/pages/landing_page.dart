@@ -7,7 +7,7 @@ import '../widgets/GetxController.dart';
 import 'home.page.dart';
 
 class LandingPage extends StatelessWidget {
-  final SignOutConroller _authController = Get.put(SignOutConroller());
+  final Controllers _authController = Get.put(Controllers());
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
