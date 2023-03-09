@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:spero_app_/pages/sign_in_email_and_password_credential_page.dart';
 import '../Services/AuthService.dart';
 import '../widgets/GetxController.dart';
 
@@ -18,13 +19,13 @@ class _SignInPageState extends State<SignInPage> {
    final String _password = "password123";
   final SignOutConroller _authController = Get.put(SignOutConroller());
   late FirebaseAuth auth;
-  late final AuthService _service;
+  late final AuthService _authService;
 
   @override
   void initState() {
     super.initState();
     auth = FirebaseAuth.instance;
-    _service = AuthService();
+    _authService = AuthService();
   }
 
   @override
@@ -88,7 +89,7 @@ class _SignInPageState extends State<SignInPage> {
               height: 80,
               buttonIcon: Image.asset("images/google-logo.png"),
               onPress: () {
-                _service.signInWithGoogle();
+                _authService.signInWithGoogle();
               },
             ),
             Button(
@@ -98,7 +99,7 @@ class _SignInPageState extends State<SignInPage> {
               radius: 16,
               height: 80,
               buttonIcon: Image.asset("images/facebook-logo.png"),
-              onPress: () {},
+              onPress: () {_authService.loginWithFacebook();},
             ),
             Button(
               buttonText: "Sign in Email and Passward",
@@ -110,7 +111,7 @@ class _SignInPageState extends State<SignInPage> {
                 Icons.email,
                 size: 28,
               ),
-              onPress: () {_service.createUserWithEmailAndPassword(_email,_password);},
+              onPress: () {  Get.to(SignInEmailAndPassward());;},
             ),
             Button(
               buttonText: "guest entry",
@@ -123,7 +124,7 @@ class _SignInPageState extends State<SignInPage> {
                 size: 28,
               ),
               onPress: () {
-                _service.signInAnaymus();
+                _authService.signInAnaymus();
               },
             ),
           ],

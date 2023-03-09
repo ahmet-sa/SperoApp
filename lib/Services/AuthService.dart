@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -6,10 +8,20 @@ import '../pages/landing_page.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final isLoggedIn = false.obs;
 
   
   
-
+  Future<void> loginWithFacebook() async {
+    final result = await FacebookAuth.instance.login();
+    if (result.status == LoginStatus.success) {
+      final accessToken = result.accessToken!;
+      // Use the access token to authenticate with a backend server or make API calls
+      isLoggedIn.value = true;
+    } else {
+      // Handle the error or cancellation of the login process
+    }
+  }
 
 
   Future<UserCredential?> signInWithGoogle() async {
@@ -31,7 +43,7 @@ class AuthService {
     }
   }
 
-   Future<User?> createUserWithEmailAndPassword(
+   Future<User?> SignInWithEmailAndPassword(
       String email, String password) async {
     try {
       final UserCredential userCredential =
