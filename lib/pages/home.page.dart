@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../widgets/GetxController.dart';
+import '../widgets/Octoprint_Credential_Showdialog.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key, required this.user});
   final Controllers _authController = Get.put(Controllers());
   final User user;
+  OctoprintCredentialShowDialog dialog = OctoprintCredentialShowDialog();
 
   @override
   Widget build(BuildContext context) {
+    Future<List<String>> buttonDetail;
     return Scaffold(
       appBar: AppBar(
         title: Text("ana sayfa"),
@@ -21,36 +24,51 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Stack(
-        children: [
-         Center(child: Text("hosgeldiniz ${user.uid}")),
-          Container(
-            color: Colors.white,
-            child: Center(
-              child: Text('Hello, World! ${user.email}'),
-            ),
-          ),
-          // Round button in the bottom right corner
-          Positioned(
-            bottom: 16.0,
-            right: 16.0,
-            child: FloatingActionButton(
-              onPressed: () {
-                _authController.showDialog();
-                
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 500,
+              child: Obx(() {
+          return ListView.builder(
+              itemCount: _authController.items.length + 1, // add one for the add button
+              itemBuilder: (BuildContext context, int index) {
+                if (index == _authController.items.length) {
+                 
+                  return ListTile(
+                  
+              
+                  
+                  );
+                } else {
+                  return ListTile(
+                    title: Text(_authController.items[index].deviceName),
+                    subtitle: Text(_authController.items[index].OctoprintIP),
+                  );
+                }
               },
-              child: Icon(Icons.add),
+          );
+        }),
             ),
-          ),
-        ],
+      
+      
+            Center(child: Text("hosgeldiniz ${user.email}")),
+            Positioned(
+              bottom: 16.0,
+              right: 16.0,
+              child: FloatingActionButton(
+                onPressed: () async {
+      
+              await dialog.showDialog();
+      
+      
+                },
+                child: Icon(Icons.add),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
-
-
-
-
- 
-

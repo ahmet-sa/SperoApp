@@ -16,10 +16,8 @@ class AuthService {
     final result = await FacebookAuth.instance.login();
     if (result.status == LoginStatus.success) {
       final accessToken = result.accessToken!;
-      // Use the access token to authenticate with a backend server or make API calls
       isLoggedIn.value = true;
     } else {
-      // Handle the error or cancellation of the login process
     }
   }
 
