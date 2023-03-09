@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spero_app_/pages/sign_in_page.dart';
+import 'package:spero_app_/pages/log_in_page.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 import '../model/octoprint_credential.dart';

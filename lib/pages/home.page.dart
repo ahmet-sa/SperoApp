@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:spero_app_/widgets/buttons.dart';
 
 import '../widgets/GetxController.dart';
 import '../widgets/Octoprint_Credential_Showdialog.dart';
@@ -30,38 +31,47 @@ class HomePage extends StatelessWidget {
             Container(
               height: 500,
               child: Obx(() {
-          return ListView.builder(
-              itemCount: _authController.items.length + 1, // add one for the add button
-              itemBuilder: (BuildContext context, int index) {
-                if (index == _authController.items.length) {
-                 
-                  return ListTile(
-                  
-              
-                  
-                  );
-                } else {
-                  return ListTile(
-                    title: Text(_authController.items[index].deviceName),
-                    subtitle: Text(_authController.items[index].OctoprintIP),
-                  );
-                }
-              },
-          );
-        }),
+                return ListView.builder(
+                  itemCount: _authController.items.length +
+                      1, // add one for the add button
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index == _authController.items.length) {
+                      return Center();
+                    } else {
+                      return Container(
+                        margin: EdgeInsets.all(5),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 60,
+                              width: 400,
+                              child: FloatingActionButton.extended(
+                                onPressed: () {},
+                                label: Column(
+                                  children: [
+                                    Text(_authController
+                                        .items[index].deviceName),
+                                    Text(_authController
+                                        .items[index].OctoprintIP),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  },
+                );
+              }),
             ),
-      
-      
             Center(child: Text("hosgeldiniz ${user.email}")),
             Positioned(
               bottom: 16.0,
               right: 16.0,
               child: FloatingActionButton(
                 onPressed: () async {
-      
-              await dialog.showDialog();
-      
-      
+                  await dialog.showDialog();
                 },
                 child: Icon(Icons.add),
               ),
