@@ -33,6 +33,10 @@ class Controllers extends GetxController {
 }
 
 
+void deleteAllItem() {
+  items = RxList<OctoprintCrendentialModel>.from([]);
+}
+
 
 
   bool validateFields() {

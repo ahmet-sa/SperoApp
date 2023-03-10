@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:spero_app_/firebase_options.dart';
 import 'package:spero_app_/pages/landing_page.dart';
-import 'package:spero_app_/widgets/GetxController.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ); 
- 
+  
   runApp( MyApp());
 }
 

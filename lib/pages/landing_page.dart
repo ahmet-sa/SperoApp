@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:spero_app_/pages/log_in_page.dart';
 
-import '../widgets/GetxController.dart';
 import '../widgets/get_credentialData_from_db.dart';
 import 'home.page.dart';
 
@@ -25,9 +23,10 @@ class LandingPage extends StatelessWidget {
 
           debugPrint("log in");
             dialog =GetCredentialDataFromDb(user: snapshot.data!,);
+            dialog.getCollactiondata();
           return HomePage(user: snapshot.data!);
         } else {
-          return SignInPage();
+          return const SignInPage();
         }
       },
     );

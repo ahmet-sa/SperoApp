@@ -15,8 +15,6 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-   final String _email = "emrealtunbilek@gmail.com";
-   final String _password = "password123";
   final Controllers _authController = Get.put(Controllers());
   late FirebaseAuth auth;
   late final AuthService _authService;
@@ -76,7 +74,11 @@ class _SignInPageState extends State<SignInPage> {
                           onPressed: _authController.isButtonEnabled.value
                               ? _authController.login
                               : null,
+
+                          
+
                           child: Text('Login'),
+                          
                         )),
                   ],
                 ),
