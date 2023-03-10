@@ -18,16 +18,21 @@ class Controllers extends GetxController {
 
 
   void addNewItem(String name, String Ip,String Api) {
-    // Create a new item with a random title and description
     OctoprintCrendentialModel newItem = OctoprintCrendentialModel(
       deviceName: name,
       OctoprintIP:Ip ,
       OctoprintApi: Api,
     );
     
-    // Add the new item to the list
     items.add(newItem);
   }
+
+
+ void deleteItem(OctoprintCrendentialModel item) {
+  items.remove(item);
+}
+
+
 
 
   bool validateFields() {
@@ -70,7 +75,7 @@ class Controllers extends GetxController {
 
   Future<void> signOut() async {
     await _auth.signOut();
-    Get.to(SignInPage());
+   Get.to(() => SignInPage());
   }
 
   

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:spero_app_/Services/%20Firestore_operations.dart';
 import 'package:spero_app_/widgets/GetxController.dart';
 
 class OctoprintCredentialShowDialog extends StatelessWidget {
    OctoprintCredentialShowDialog({super.key});
+
+   FireStoreOperations _operations=FireStoreOperations();
 
    TextEditingController ipContoller = TextEditingController();
 
@@ -57,19 +60,20 @@ class OctoprintCredentialShowDialog extends StatelessWidget {
                 Get.back();
               },
             ),
-            ElevatedButton(
+            FloatingActionButton(
               child: Text('Save'),
               onPressed: () {
                 String OctoprintIP = ipContoller.text;
                 String OctoprintApi = apiControlller.text;
                 String DeviceName = deviceNameController.text;
                  _authController.addNewItem(deviceNameController.text, ipContoller.text, apiControlller.text);
+                 _operations.addValue(DeviceName, OctoprintIP, OctoprintApi);
                 ipContoller.text = "";
                 apiControlller.text = "";
                 deviceNameController.text = "";
                 
 
-
+       
                 
 
                 Get.back(result: [DeviceName, OctoprintIP, OctoprintApi]);
