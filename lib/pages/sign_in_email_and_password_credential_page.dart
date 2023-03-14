@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spero_app_/widgets/buttons.dart';
 
-import '../Services/AuthService.dart';
+import '../Services/auth_service.dart';
 
 class SignInEmailAndPassward extends StatefulWidget {
   const SignInEmailAndPassward({super.key});

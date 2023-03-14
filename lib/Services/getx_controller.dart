@@ -5,10 +5,11 @@ import 'package:spero_app_/pages/log_in_page.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 import '../model/octoprint_credential.dart';
-import '../pages/home.page.dart';
+import '../pages/device_select_page.dart';
 
 class Controllers extends GetxController {
   FirebaseAuth _auth = FirebaseAuth.instance;
+  var currentIndex = 0.obs;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
  
@@ -28,14 +29,21 @@ class Controllers extends GetxController {
   }
 
 
+
+
+
+
  void deleteItem(OctoprintCrendentialModel item) {
   items.remove(item);
-}
+  }
 
-
-void deleteAllItem() {
-  items = RxList<OctoprintCrendentialModel>.from([]);
-}
+   void changePage(int index) {
+    debugPrint(index.toString());
+    currentIndex.value = index;
+  }
+  void deleteAllItem() {
+    items = RxList<OctoprintCrendentialModel>.from([]);
+  }
 
 
 
@@ -63,7 +71,7 @@ void deleteAllItem() {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      Get.offAll(() => HomePage(
+      Get.offAll(() => DeviceSelectPage(
             user: _auth.currentUser!,
           ));
     } on FirebaseAuthException catch (e) {

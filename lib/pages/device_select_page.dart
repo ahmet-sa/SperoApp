@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spero_app_/pages/Octoprint_Control_page.dart';
+import 'package:spero_app_/pages/home_page.dart';
 import 'package:spero_app_/widgets/buttons.dart';
 
-import '../widgets/GetxController.dart';
-import '../widgets/Octoprint_Credential_Showdialog.dart';
+import '../Services/getx_controller.dart';
+import '../widgets/octoprint_credential_showdialog.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key, required this.user});
+class DeviceSelectPage extends StatelessWidget {
+  DeviceSelectPage({super.key, required this.user});
   final Controllers _authController = Get.put(Controllers());
   final User user;
   OctoprintCredentialShowDialog dialog = OctoprintCredentialShowDialog();
@@ -58,8 +58,9 @@ class HomePage extends StatelessWidget {
                                     heroTag: _authController
                                         .items[index].OctoprintApi,
                                     onPressed: () {
+                                   
 
-                                       Get.to(() => OctoprinControlPage(Ip: _authController
+                                       Get.to(() => HomePage(Ip: _authController
                                             .items[index].OctoprintIP, Api: _authController
                                             .items[index].OctoprintApi));
                                     },

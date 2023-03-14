@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spero_app_/pages/sign_in_email_and_password_credential_page.dart';
-import '../Services/AuthService.dart';
-import '../widgets/GetxController.dart';
+import '../Services/auth_service.dart';
+import '../Services/getx_controller.dart';
 
 import '../widgets/buttons.dart';
 

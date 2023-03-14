@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spero_app_/Services/%20Firestore_operations.dart';
-import 'package:spero_app_/widgets/GetxController.dart';
+import 'package:spero_app_/Services/%20firestore_operations.dart';
+import 'package:spero_app_/Services/getx_controller.dart';
 
 class OctoprintCredentialShowDialog extends StatelessWidget {
    OctoprintCredentialShowDialog({super.key});

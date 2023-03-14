@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:spero_app_/pages/log_in_page.dart';
 
-import '../widgets/get_credentialData_from_db.dart';
-import 'home.page.dart';
+import '../widgets/get_credential_data_from_db.dart';
+import 'device_select_page.dart';
 
 class LandingPage extends StatelessWidget {
   late GetCredentialDataFromDb dialog ;
@@ -24,7 +24,7 @@ class LandingPage extends StatelessWidget {
           debugPrint("log in");
             dialog =GetCredentialDataFromDb(user: snapshot.data!,);
             dialog.getCollactiondata();
-          return HomePage(user: snapshot.data!);
+          return DeviceSelectPage(user: snapshot.data!);
         } else {
           return const SignInPage();
         }

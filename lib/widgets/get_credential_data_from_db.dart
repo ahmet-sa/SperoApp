@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spero_app_/widgets/GetxController.dart';
+import 'package:spero_app_/Services/getx_controller.dart';
 
-import '../Services/ Firestore_operations.dart';
+import '../Services/ firestore_operations.dart';
 
 class GetCredentialDataFromDb {
   final User user;
